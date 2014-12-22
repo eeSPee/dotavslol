@@ -1,0 +1,79 @@
+// Dota Heroes File
+// NOTE: This isn't for creating new heroes, this is for taking a currently existing hero as a template and overriding
+// the specified key-value combinations.  Use override_hero <hero_to_override> for this.
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: nyx Assassin
+	//=================================================================================================================
+	"npc_dota_hero_greenterror"
+	{
+		//"BaseClass"				"npc_dota_hero_nyx_assassin"
+		//"HeroID"				"1"
+		"override_hero"				"npc_dota_hero_nyx_assassin"
+		"AbilityLayout" 		"5"
+		"Ability2"					"greenterror_scream"		
+		"Ability1"					"greenterror_rupture"		
+		"Ability3"					"greenterror_spikes"
+		"Ability4"					"greenterror_passive"
+		"Ability5"					"greenterror_bite"
+		"Ability6"					"attribute_bonus"
+	}
+	"npc_dota_hero_shaco"
+	{
+		"override_hero"				"npc_dota_hero_bounty_hunter"
+		"AbilityLayout" 		"5"
+		"Ability1"					"jester_blink"		// Ability 1
+		"Ability2"					"jester_trap"		// Ability 2
+		"Ability3"					"jester_shiv"
+		"Ability4"					"jester_passive"
+		"Ability5"					"jester_clone"
+		"Ability6"					"attribute_bonus"
+	}
+	"npc_dota_hero_amumu"
+	{
+		"override_hero"				"npc_dota_hero_rattletrap"
+		"AbilityLayout" 		"5"
+		"Ability1"					"mumu_Web"		// Ability 1
+		"Ability2"					"amumu_cry"		// Ability 2
+		"Ability3"					"amumu_tantrum"
+		"Ability4"					"mumu_passive"
+		"Ability5"					"amumu_curse"
+		"Ability6"					"attribute_bonus"
+	}
+	"npc_dota_hero_alistar"
+	{
+		"override_hero"				"npc_dota_hero_spirit_breaker"
+		"AbilityLayout" 		"5"
+		"Ability1"					"alistar_pulverize"		// Ability 1
+		"Ability2"					"alistar_charge"		// Ability 2
+		"Ability3"					"alistar_heal"
+		"Ability4"					"alistar_passive"
+		"Ability5"					"alistar_ultimate"
+		"Ability6"					"attribute_bonus"
+	}
+	"npc_dota_hero_nunu"
+	{
+		"override_hero"				"npc_dota_hero_tusk"
+		"AbilityLayout" 		"5"
+		"Ability1"					"nunu_Bite"		// Ability 1
+		"Ability2"					"nunu_boil"		// Ability 2
+		"Ability3"					"nunu_iceball"
+		"Ability4"					"nunu_passive_tooltip"
+		"Ability5"					"nunu_ultimate"
+		"Ability6"					"attribute_bonus"
+	}
+	"npc_dota_hero_corki"
+	{
+		"override_hero"				"npc_dota_hero_gyrocopter"
+		"AbilityLayout" 		"5"
+		"Ability1"					"gyro_bomb"		// Ability 1
+		"Ability2"					"nunu_boil"		// Ability 2
+		"Ability3"					"gyro_cannon"
+		"Ability4"					"nunu_passive_tooltip"
+		"Ability5"					"gyro_missile_dummy"
+		"Ability6"					"attribute_bonus"
+		"Ability7"					"gyro_missile_small"
+		"Ability8"					"gyro_missile_big"
+	}
+}
