@@ -165,14 +165,6 @@ function scrapelifebasedonabilitypowerHUNDREDS(keys)
 end
 
 function updateAP(keys)
-	local caster=keys.caster
-	local Data = GameData:For("DataCounter",caster:GetPlayerOwner())
-	local AP = 0
-
-	if caster:HasItemInInventory("item_filler")==true then
-	AP=AP+1
-	end
 	
-	Data.AbilityPower=AP
 
 end

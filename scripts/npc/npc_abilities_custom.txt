@@ -645,12 +645,13 @@
 					"Target"	   "TARGET"	
 					"Duration"		"0.1"
 					}
-					"Damage"
-					{
+					"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/abilities/chogath.lua"
+					"Function"				"Bite"
 					"Target"				"TARGET"
-					"Type"					"DAMAGE_TYPE_PURE"
 					"Damage"				"%damage"
-					}	
+				}	
 					"RunScript"
 							{
 								"ScriptFile"			"scripts/vscripts/abilities/general.lua"

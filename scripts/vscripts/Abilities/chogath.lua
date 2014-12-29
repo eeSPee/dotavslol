@@ -85,3 +85,24 @@ function UpdateStack(keys)
 	
 end
 
+function Bite(keys)
+	local caster=keys.caster
+	local tarhet=keys.target
+	
+	if tarhet~=nil then
+		
+		local DMJ=keys.Damage
+		
+		if (tarhet:IsHero()~=true) then
+			DMJ=1000
+		end
+		local damageTable = {
+			victim = tarhet,
+			attacker = caster,
+			damage  = DMJ,
+			damage_type = DAMAGE_TYPE_PURE,
+			}
+			ApplyDamage(damageTable)
+	print(DMJ)
+	end
+end

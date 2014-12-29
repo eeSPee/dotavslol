@@ -30,7 +30,7 @@ function TableCopy(table)
 end
 
 PlayerDataCounter = {
-	AbilityPower = 1000,	
+	AbilityPower = 0,	
 	NuNuStacks = 0,	
 	NunuUltiCharges = 0,	
 	CorkiMissiles = 4,		
