@@ -1,5 +1,6 @@
-GameData = {}
-GameData.Schema = {}
+
+	GameData = {}
+	GameData.Schema = {}
 
 function GameData:AddSchema(schemaname, data)
 	self.Schema[schemaname] = {
@@ -18,7 +19,7 @@ function GameData:Assign(schemaname, entobj)
 	local bind = TableCopy(data)
 	bind.Ent = entobj
 	self.Schema[schemaname].Entries[entobj] = bind
-	return self.Schema[schemaname].Entries[entobj] --better way?
+	return self.Schema[schemaname].Entries[entobj]
 end
 
 function TableCopy(table)
@@ -30,7 +31,8 @@ function TableCopy(table)
 end
 
 PlayerDataCounter = {
-	AbilityPower = 0,	
+	AbilityPower = 1000,	
+	CDRpercent = 1,	
 	NuNuStacks = 0,	
 	NunuUltiCharges = 0,	
 	CorkiMissiles = 4,		
@@ -45,5 +47,6 @@ BrushData = {
 	BrushesInVicinity = {}	
 }
 
-GameData:AddSchema("DataCounter", PlayerDataCounter)
-GameData:AddSchema("BrushData", BrushData)
+
+	GameData:AddSchema("DataCounter", PlayerDataCounter)
+	GameData:AddSchema("BrushData", BrushData)

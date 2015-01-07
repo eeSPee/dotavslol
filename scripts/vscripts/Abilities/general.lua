@@ -47,7 +47,7 @@ function dealPHYSICALdamagebasedonabilitypower(keys)
 	ApplyDamage(damageTable)
 end
 
-function dealPHYSICALdamagebasedonabilitypower(keys)
+function dealPUREdamagebasedonabilitypower(keys)
 	local caster = keys.caster
 	local target = keys.target	
 	local Scale= keys.apscale
@@ -118,8 +118,6 @@ function DashToTarget(keys)
     local direction = targetPos - casterPos
     local vec = direction:Normalized() * ability:GetLevelSpecialValueFor("dashspeed",ability:GetLevel())
 	
-	print(vec)
-	
 	keys.caster:SetAbsOrigin(casterPos + vec)
 end
 
@@ -129,6 +127,17 @@ function ReduceCooldown(keys)
 
 	local reduction=ability:GetLevelSpecialValueFor("cdreduction",ability:GetLevel())
 	local Time=ability:GetCooldownTimeRemaining()-reduction
+	
+	ability:EndCooldown()	
+	ability:StartCooldown(Time)	
+end
+
+function HandleCDR(keys)
+	local caster=keys.caster
+	local Data = GameData:For("DataCounter",caster:GetPlayerOwner())
+	local ability=keys.ability
+	local CDR = Data.CDRpercent
+	local Time=ability:GetCooldown(ability:GetLevel())*(1-CDR)
 	
 	ability:EndCooldown()	
 	ability:StartCooldown(Time)	
@@ -162,9 +171,4 @@ function scrapelifebasedonabilitypowerHUNDREDS(keys)
 	damage_type = DAMAGE_TYPE_MAGICAL,
 	}
 	ApplyDamage(damageTable)
-end
-
-function updateAP(keys)
-	
-
 end

@@ -204,11 +204,17 @@
 						
 		 "OnSpellStart"
 		 {
+			"RunScript"
+			{
+				
+								"ScriptFile"			"scripts/vscripts/abilities/general.lua"
+								"Function"				"HandleCDR"
+			}
 		   "CreateThinker"
 		   {
 				"ModifierName" "creature_rupture_thinker"
 				"Target" "POINT"
-		   }
+		   }							
 		   "DelayedAction"
 		   {
 		   "Delay" "%risetime"
@@ -218,7 +224,7 @@
 					 "CreateThinker"
 					   {
 						"ModifierName" "creature_rupture_area"
-						"Target" "CASTER"
+						"Target" "POINT"
 						"Duration" "1"
 					   }
 				
@@ -270,7 +276,7 @@
 							 "CreateThinker"
 						   {
 							"ModifierName" "creature_rupture_target"
-							"Target" "TARGET"
+							"Target" "POINT"
 							"Duration" "1"
 						   }
 						}
@@ -334,7 +340,7 @@
 							"ControlPoints"
 							{
 								"00" "0 0 0"
-								"01" "%radius %radius %radius"
+								"01" "%halfradius %halfradius %halfradius"
 							}
 						 }
 				}
@@ -362,7 +368,12 @@
 				"03"
 				{
 					"var_type"				"FIELD_FLOAT"
-					"radius"		"300"
+					"radius"		"200"
+				}	
+				"06"
+				{
+					"var_type"				"FIELD_FLOAT"
+					"halfradius"		"200"
 				}				
 				"01"
 				{
@@ -419,6 +430,11 @@
 		
 		"OnSpellStart"
 		{
+							"RunScript"
+							{
+								"ScriptFile"			"scripts/vscripts/abilities/general.lua"
+								"Function"				"HandleCDR"
+							}
 			"LinearProjectile"
 			{				
 				"EffectName"			"particles/hw_fx/hw_rosh_transition_roar.vpcf"
@@ -638,6 +654,11 @@
 		
 		"OnSpellStart"
 		{
+							"RunScript"
+							{
+								"ScriptFile"			"scripts/vscripts/abilities/general.lua"
+								"Function"				"HandleCDR"
+							}
 							
 					"ApplyModifier"
 					{
