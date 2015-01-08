@@ -1,0 +1,61 @@
+
+// Dota Abilities Override File
+"DOTAAbilities"
+{
+	"Version"		"1"
+	
+	//=================================================================================================================
+	// Helm of the Dominator Override
+	//=================================================================================================================
+	"item_helm_of_the_dominator"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_helm_of_the_dominator"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		"Modifiers"
+		{
+			"modifier_hotd"
+			{
+				"Passive"				"1"
+				"IsHidden"				"1"
+				"OnCreated"
+				{							
+								"RunScript"
+								{
+								"ScriptFile"			"scripts/vscripts/abilities/stats.lua"
+								"Function"				"AddAPCDR"
+								"cdbonus"					"%bonus_CDR"
+								"apbonus"					"%bonus_AP"
+								}
+				}
+				
+				"OnDestroy"
+				{							
+								"RunScript"
+								{
+								"ScriptFile"			"scripts/vscripts/abilities/stats.lua"
+								"Function"				"RemoveAPCDR"
+								"cdbonus"					"%bonus_CDR"
+								"apbonus"					"%bonus_AP"
+								}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_AP"			"1000"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_CDR"			"100"
+			}
+		}
+	}
+}

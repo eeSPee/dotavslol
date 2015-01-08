@@ -31,14 +31,13 @@ function TableCopy(table)
 end
 
 PlayerDataCounter = {
-	AbilityPower = 1000,	
-	CDRpercent = 1,	
+	AbilityPower = 0,	
+	CDRpercent = 0,	
 	NuNuStacks = 0,	
 	NunuUltiCharges = 0,	
 	CorkiMissiles = 4,		
 	CorkiMissilesShot = 0,		
 	ChoGathStacks = 0,	
-	ChoGathStackAbility = nil	
 }
 
 BrushData = {

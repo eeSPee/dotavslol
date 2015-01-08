@@ -207,7 +207,7 @@
 			"RunScript"
 			{
 				
-								"ScriptFile"			"scripts/vscripts/abilities/general.lua"
+								"ScriptFile"			"scripts/vscripts/abilities/stats.lua"
 								"Function"				"HandleCDR"
 			}
 		   "CreateThinker"
@@ -432,7 +432,7 @@
 		{
 							"RunScript"
 							{
-								"ScriptFile"			"scripts/vscripts/abilities/general.lua"
+								"ScriptFile"			"scripts/vscripts/abilities/stats.lua"
 								"Function"				"HandleCDR"
 							}
 			"LinearProjectile"
@@ -656,7 +656,7 @@
 		{
 							"RunScript"
 							{
-								"ScriptFile"			"scripts/vscripts/abilities/general.lua"
+								"ScriptFile"			"scripts/vscripts/abilities/stats.lua"
 								"Function"				"HandleCDR"
 							}
 							
@@ -665,6 +665,11 @@
 					"ModifierName" "greenterror_feast_invisible"
 					"Target"	   "TARGET"	
 					"Duration"		"0.1"
+					}
+					"ApplyModifier"
+					{
+					"ModifierName" "modifier_feast_bonus"
+					"Target"	   "CASTER"	
 					}
 					"RunScript"
 				{
@@ -684,6 +689,14 @@
 		}
 		
 		"OnUpgrade"
+		{
+			"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/abilities/chogath.lua"
+					"Function"				"UpdateStack"
+				}
+		}
+		"OnRespawn"
 		{
 			"RunScript"
 				{
@@ -725,6 +738,28 @@
 							}
 					}
 				}
+			
+				"modifier_feast_bonus"
+				{
+						"IsPurgable" "0"
+						"Passive"	 "1"
+						"Attributes" "MODIFIER_ATTRIBUTE_PERMANENT"
+						"Properties"
+						 {
+						   "MODIFIER_PROPERTY_MODEL_SCALE" "%stack_scale"
+						   "MODIFIER_PROPERTY_HEALTH_BONUS" "%stack_health"
+						   "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS" "%stack_range"
+						 }	
+						"OnCreated"
+						{
+							"RunScript"
+							{
+								"ScriptFile"			"scripts/vscripts/abilities/chogath.lua"
+								"Function"				"UpdateStack"
+							}	
+						}						
+				
+				}
 			}
 			
 		
@@ -739,6 +774,21 @@
 					{
 					"var_type"				"FIELD_FLOAT"
 					"creepdamage" "1000"
+					}
+				"03"	
+				{
+					"var_type"				"FIELD_FLOAT"
+					"stack_scale" "4 6 8"
+					}
+				"04"
+				{
+					"var_type"				"FIELD_FLOAT"
+					"stack_range" "5 10 15"	
+					}
+				"05"
+				{
+					"var_type"				"FIELD_FLOAT"
+					"stack_health" "50 100 150"	
 					}
 			}	
 				
@@ -816,233 +866,12 @@
 					"var_type"				"FIELD_FLOAT"
 					"mana" "10"
 				}
+				
 			}
 				
 	}
 	
-	"greenterror_HP1"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"9900"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
-		"BaseClass"						"ability_datadriven"
-		"AbilityName"					"greenterror_passive"
-		"OnCastbar"						"0"
-		"OnLearnbar"					"0"	
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_HIDDEN "		
-		"AbilityTextureName" 			"nyx_assassin_vendetta"
-		"MaxLevel"                      "6"		
-
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"0"
-		"AbilityCastPoint"				"0.0"
-
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"0.0"
-
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"0"
-
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"ModifierName" "modifier_feast_bonus"
-				"Target"	   "CASTER"	
-			}
-		}				
-		"Modifiers"
-		{
-		
-			"modifier_feast_bonus"
-			{
-					"IsPurgable" "0"
-					"Passive"	 "1"
-					"Properties"
-					 {
-					   "MODIFIER_PROPERTY_MODEL_SCALE" "%stack_scale"
-					   "MODIFIER_PROPERTY_HEALTH_BONUS" "%stack_health"
-					   "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS" "%stack_range"
-					 }			
-			
-			}
-			
-
-		}
-		"AbilitySpecial"
-			{
-				
-				"01"	
-				{
-					"var_type"				"FIELD_FLOAT"
-					"stack_scale" "4 8 12 16 20 24"
-					}
-				"02"
-				{
-					"var_type"				"FIELD_FLOAT"
-					"stack_range" "5 10 15 20 25 30"	
-					}
-				"03"
-				{
-					"var_type"				"FIELD_FLOAT"
-					"stack_health" "50 100 150 200 250 300"	
-					}
-			}	
-				
-	}
 	
-	"greenterror_HP2"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"9901"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
-		"BaseClass"						"ability_datadriven"
-		"AbilityName"					"greenterror_passive"
-		"OnCastbar"						"0"
-		"OnLearnbar"					"0"			
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_HIDDEN "		
-		"AbilityTextureName" 			"nyx_assassin_vendetta"
-		"MaxLevel"                      "6"		
-		"IsHidden"						"1"
-
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"0"
-		"AbilityCastPoint"				"0.0"
-
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"0.0"
-
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"0"
-
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"ModifierName" "modifier_feast_bonus"
-				"Target"	   "CASTER"	
-			}
-		}		
-			
-		"Modifiers"
-		{
-		
-			"modifier_feast_bonus"
-			{
-					"IsPurgable" "0"
-					"Passive"	 "1"
-					"Properties"
-					 {
-					   "MODIFIER_PROPERTY_MODEL_SCALE" "%stack_scale"
-					   "MODIFIER_PROPERTY_HEALTH_BONUS" "%stack_health"
-					   "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS" "%stack_range"
-					 }			
-			
-			}
-			
-
-		}
-		"AbilitySpecial"
-			{
-				
-				"01"	
-				{
-					"var_type"				"FIELD_FLOAT"
-					"stack_scale" "6 12 18 24 30 36"	
-					}
-				"02"
-				{
-					"var_type"				"FIELD_FLOAT"
-					"stack_range" "10 20 30 40 50 60"	
-					}
-				"03"
-				{
-					"var_type"				"FIELD_FLOAT"
-					"stack_health" "100 200 300 400 500 600"	
-					}
-			}	
-				
-	}
-	
-	"greenterror_HP3"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"9902"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
-		"BaseClass"						"ability_datadriven"
-		"AbilityName"					"greenterror_passive"		
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_HIDDEN "		
-		"AbilityTextureName" 			"nyx_assassin_vendetta"
-		"MaxLevel"                      "6"	
-		"IsHidden"						"1"				
-
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"0"
-		"AbilityCastPoint"				"0.0"
-
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"0.0"
-
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"0"
-
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"ModifierName" "modifier_feast_bonus"
-				"Target"	   "CASTER"	
-			}
-		}		
-			
-		"Modifiers"
-		{
-		
-			"modifier_feast_bonus"
-			{
-					"Passive"	 "1"
-					"IsPurgable" "0"
-					"Properties"
-					 {
-					   "MODIFIER_PROPERTY_MODEL_SCALE" "%stack_scale"
-					   "MODIFIER_PROPERTY_HEALTH_BONUS" "%stack_health"
-					   "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS" "%stack_range"
-					 }			
-			
-			}
-			
-
-		}
-		"AbilitySpecial"
-			{
-				
-				"01"	
-				{
-					"var_type"				"FIELD_FLOAT"
-					"stack_scale" "8 16 24 32 40 48"	
-					}
-				"02"
-				{
-					"var_type"				"FIELD_FLOAT"
-					"stack_range" "15 30 45 60 75 90"	
-					}
-				"03"
-				{
-					"var_type"				"FIELD_FLOAT"
-					"stack_health" "150 300 450 600 750 900"	
-					}
-			}	
-				
-	}
 	//=================================================================================================================
 	// blink
 	//=================================================================================================================

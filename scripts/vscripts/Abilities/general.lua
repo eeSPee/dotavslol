@@ -19,6 +19,7 @@ function dealMAGICdamagebasedonabilitypower(keys)
 	local Data = GameData:For("DataCounter",caster:GetPlayerOwner())
 	local AP = Data.AbilityPower
 	local DMJ=AP*Scale
+	print(AP)
 	
 	local damageTable = {
 	victim = target,
@@ -132,17 +133,6 @@ function ReduceCooldown(keys)
 	ability:StartCooldown(Time)	
 end
 
-function HandleCDR(keys)
-	local caster=keys.caster
-	local Data = GameData:For("DataCounter",caster:GetPlayerOwner())
-	local ability=keys.ability
-	local CDR = Data.CDRpercent
-	local Time=ability:GetCooldown(ability:GetLevel())*(1-CDR)
-	
-	ability:EndCooldown()	
-	ability:StartCooldown(Time)	
-end
-
 function ResetCoolDown(keys)
 	local caster=keys.caster
 	local ability=keys.ability
@@ -172,3 +162,4 @@ function scrapelifebasedonabilitypowerHUNDREDS(keys)
 	}
 	ApplyDamage(damageTable)
 end
+
