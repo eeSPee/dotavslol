@@ -27,8 +27,6 @@
 								{
 								"ScriptFile"			"scripts/vscripts/abilities/stats.lua"
 								"Function"				"AddAPCDR"
-								"cdbonus"					"%bonus_CDR"
-								"apbonus"					"%bonus_AP"
 								}
 				}
 				
@@ -38,8 +36,6 @@
 								{
 								"ScriptFile"			"scripts/vscripts/abilities/stats.lua"
 								"Function"				"RemoveAPCDR"
-								"cdbonus"					"%bonus_CDR"
-								"apbonus"					"%bonus_AP"
 								}
 				}
 			}
@@ -49,12 +45,12 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_AP"			"1000"
+				"APbonus"			"1000"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_CDR"			"100"
+				"CDbonus"			"100"
 			}
 		}
 	}

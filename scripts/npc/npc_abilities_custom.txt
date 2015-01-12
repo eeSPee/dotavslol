@@ -162,7 +162,604 @@
 			}
 				
 	}	
+	
+	"lol_BluePassive"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"8000"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"ability_datadriven"
+		"AbilityName"					"lol_BluePassive"
+		"OnCastbar"						"1"
+		"OnLearnbar"					"1"			
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"		
+		"AbilityTextureName" 			"bristleback_quill_spray"
+		
+		
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0.0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+			
+		"Modifiers"
+		{
+			"BluePassive"
+			{			
+				"Passive"	 "1"
+				"IsHidden"	 "1"
+				"OnDeath"
+				{	
+					"RunScript"
+								{
+								"ScriptFile"			"scripts/vscripts/abilities/neutral.lua"
+								"Function"				"ApplyBlueBuff"
+								"Target"				"ATTACKER"
+								}		
+				}
+			}
+
+		}
 				
+	}	
+	
+	"lol_BluePassive_dummy"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"8001"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"ability_datadriven"
+		"AbilityName"					"lol_BluePassive_dummy"
+		"OnCastbar"						"1"
+		"OnLearnbar"					"1"			
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"		
+		"AbilityTextureName" 			"bristleback_quill_spray"
+		
+		
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0.0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"		
+		
+		"OnEquip"
+		{
+					"RunScript"
+								{
+								"ScriptFile"			"scripts/vscripts/abilities/neutral.lua"
+								"Function"				"ApplyBlueBuff"
+								"Target"				"CASTER"
+								}
+		}
+		"Modifiers"
+		{	
+			"DummyBlueBuff"
+			{	
+				"Passive"	 "1"	
+				"OnDestroy"
+				{							
+					"ApplyModifier"
+					{
+								"Target"				"CASTER"
+								"ModifierName"			"BlueBuff"
+								"Duration"			"%duration"
+					}
+								"RemoveAbility"
+								{
+											"Target"				"CASTER"
+											"AbilityName"			"lol_BluePassive_dummy"
+								}
+								"RemoveModifier"
+					{
+								"Target"				"CASTER"
+								"ModifierName"			"DummyBlueBuff"
+					}
+				}		
+			}
+			"BlueBuff"
+			{
+				"Properties"
+				 {
+				   "MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" "%BaseRegen"
+				 }	
+				"ThinkInterval" "%interval"
+				"OnIntervalThink"
+				{
+					"RunScript"
+								{
+								"ScriptFile"			"scripts/vscripts/abilities/general.lua"
+								"Function"				"RestoreManaPercent"
+								"mana"					"%Percentage"
+								}
+				
+				}
+				"OnDeath"
+				{
+					"RunScript"
+							{
+								"ScriptFile"			"scripts/vscripts/Abilities/neutral.lua"
+								"Function"				"ApplyBlueBuff"
+								"Target"				"ATTACKER"
+							}	
+				}
+				"OnCreated"
+				{							
+								"RunScript"
+								{
+								"ScriptFile"			"scripts/vscripts/abilities/stats.lua"
+								"Function"				"AddAPCDR"
+								}
+				}
+				
+				"OnDestroy"
+				{							
+								"RunScript"
+								{
+								"ScriptFile"			"scripts/vscripts/abilities/stats.lua"
+								"Function"				"RemoveAPCDR"
+								}
+				}
+			}
+
+		}
+		"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type"				"FIELD_FLOAT"
+					"duration" "120"
+					
+				}	
+				"02"
+				{
+					"var_type"				"FIELD_FLOAT"
+					"CDbonus" "15"
+					
+				}
+				"03"
+				{
+					"var_type"				"FIELD_FLOAT"
+					"BaseRegen" "25"
+					
+				}
+				"04"
+				{
+					"var_type"				"FIELD_FLOAT"
+					"Percentage" "1"
+					
+				}
+				"05"
+				{
+					"var_type"				"FIELD_FLOAT"
+					"interval" "0.2"
+					
+				}
+			}
+				
+	}	
+	
+	"lol_RedPassive"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"8000"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"ability_datadriven"
+		"AbilityName"					"lol_RedPassive"
+		"OnCastbar"						"1"
+		"OnLearnbar"					"1"			
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"		
+		"AbilityTextureName" 			"bristleback_quill_spray"
+		
+		
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0.0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+			
+		"Modifiers"
+		{
+			"BluePassive"
+			{			
+				"Passive"	 "1"
+				"IsHidden"	 "1"
+				"OnDeath"
+				{	
+					"RunScript"
+								{
+								"ScriptFile"			"scripts/vscripts/abilities/neutral.lua"
+								"Function"				"ApplyRedBuff"
+								"Target"				"ATTACKER"
+								}		
+				}
+			}
+
+		}
+				
+	}	
+	
+	"lol_RedPassive_melee"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"8001"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"ability_datadriven"
+		"AbilityName"					"lol_RedPassive_melee"
+		"OnCastbar"						"1"
+		"OnLearnbar"					"1"			
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"		
+		"AbilityTextureName" 			"bristleback_quill_spray"
+		
+		
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0.0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"		
+		
+		"OnEquip"
+		{
+					"RunScript"
+								{
+								"ScriptFile"			"scripts/vscripts/abilities/neutral.lua"
+								"Function"				"ApplyRedBuff"
+								"Target"				"CASTER"
+								}
+		}
+		"Modifiers"
+		{	
+			"DummyRedBuff"
+			{	
+				"Passive"	 "1"	
+				"OnDestroy"
+				{							
+					"ApplyModifier"
+					{
+								"Target"				"CASTER"
+								"ModifierName"			"RedBuff"
+								"Duration"			"%duration"
+					}
+								"RemoveAbility"
+								{
+											"Target"				"CASTER"
+											"AbilityName"			"lol_RedPassive_melee"
+								}
+								"RemoveModifier"
+					{
+								"Target"				"CASTER"
+								"ModifierName"			"DummyRedBuff"
+					}
+				}		
+			}
+			"RedBuff"
+			{
+				"ThinkInterval" "%interval"
+				"OnIntervalThink"
+				{
+					"RunScript"
+								{
+								"ScriptFile"			"scripts/vscripts/abilities/general.lua"
+								"Function"				"RestoreLifePercent"
+								"life"					"%Percentage"
+								}
+				
+				}
+				"OnAttackLanded"
+				{				
+					"ApplyModifier"
+					{
+						"Target" "TARGET"
+						"ModifierName" "RedSlow"
+						"Duration" "%slowduration"
+					}	
+				}
+				"OnDeath"
+				{
+					"RunScript"
+							{
+								"ScriptFile"			"scripts/vscripts/Abilities/neutral.lua"
+								"Function"				"ApplyBlueBuff"
+								"Target"				"ATTACKER"
+							}	
+				}
+				"OnCreated"
+				{							
+								"RunScript"
+								{
+								"ScriptFile"			"scripts/vscripts/abilities/stats.lua"
+								"Function"				"AddAPCDR"
+								}
+				}
+				
+				"OnDestroy"
+				{							
+								"RunScript"
+								{
+								"ScriptFile"			"scripts/vscripts/abilities/stats.lua"
+								"Function"				"RemoveAPCDR"
+								}
+				}
+			}
+			"RedSlow"
+			{
+				"ThinkInterval" "%interval"				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"      "%Slow"
+				}
+				"OnIntervalThink"
+				{
+					"RunScript"
+								{
+								"ScriptFile"			"scripts/vscripts/abilities/general.lua"
+								"Function"				"dealPUREdamagebasedonlevel"
+								"Target"				"TARGET"
+								"damagebase"			"%damagebase"
+								"damagemult"			"%damagemult"
+								}
+				
+				}
+			}
+		}
+		"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type"				"FIELD_FLOAT"
+					"duration" "120"
+					
+				}	
+				"03"
+				{
+					"var_type"				"FIELD_FLOAT"
+					"damagebase" "8"
+					
+				}
+				"04"
+				{
+					"var_type"				"FIELD_FLOAT"
+					"Percentage" "20"
+					
+				}
+				"05"
+				{
+					"var_type"				"FIELD_FLOAT"
+					"interval" "1"
+					
+				}	
+				"02"
+				{
+					"var_type"				"FIELD_FLOAT"
+					"damagemult" "2"
+					
+				}
+				"06"
+				{
+					"var_type"				"FIELD_INTEGER"
+					"Slow" "-8 -16 -24"
+					
+				}
+				"07"
+				{
+					"var_type"				"FIELD_FLOAT"
+					"slowduration" "5"
+					
+				}	
+			}
+				
+	}	
+	
+	"lol_RedPassive_ranged"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"8001"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"ability_datadriven"
+		"AbilityName"					"lol_RedPassive_melee"
+		"OnCastbar"						"1"
+		"OnLearnbar"					"1"			
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"		
+		"AbilityTextureName" 			"bristleback_quill_spray"
+		
+		
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0.0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"		
+		
+		"OnEquip"
+		{
+					"RunScript"
+								{
+								"ScriptFile"			"scripts/vscripts/abilities/neutral.lua"
+								"Function"				"ApplyRedBuff"
+								"Target"				"CASTER"
+								}
+		}
+		"Modifiers"
+		{	
+			"DummyRedBuff"
+			{	
+				"Passive"	 "1"	
+				"OnDestroy"
+				{							
+					"ApplyModifier"
+					{
+								"Target"				"CASTER"
+								"ModifierName"			"RedBuff"
+								"Duration"			"%slowduration"
+					}
+								"RemoveAbility"
+								{
+											"Target"				"CASTER"
+											"AbilityName"			"lol_RedPassive_ranged"
+								}
+								"RemoveModifier"
+					{
+								"Target"				"CASTER"
+								"ModifierName"			"DummyRedBuff"
+					}
+				}		
+			}
+			"RedBuff"
+			{
+				"ThinkInterval" "%interval"
+				"OnIntervalThink"
+				{
+					"RunScript"
+								{
+								"ScriptFile"			"scripts/vscripts/abilities/general.lua"
+								"Function"				"RestoreLifePercent"
+								"life"					"%Percentage"
+								}
+				
+				}
+				"OnAttackLanded"
+				{				
+					"ApplyModifier"
+					{
+						"Target" "TARGET"
+						"ModifierName" "RedSlow"
+						"Duration" "%duration"
+					}	
+				}
+				"OnDeath"
+				{
+					"RunScript"
+							{
+								"ScriptFile"			"scripts/vscripts/Abilities/neutral.lua"
+								"Function"				"ApplyBlueBuff"
+								"Target"				"ATTACKER"
+							}	
+				}
+				"OnCreated"
+				{							
+								"RunScript"
+								{
+								"ScriptFile"			"scripts/vscripts/abilities/stats.lua"
+								"Function"				"AddAPCDR"
+								}
+				}
+				
+				"OnDestroy"
+				{							
+								"RunScript"
+								{
+								"ScriptFile"			"scripts/vscripts/abilities/stats.lua"
+								"Function"				"RemoveAPCDR"
+								}
+				}
+			}
+			"RedSlow"
+			{
+				"ThinkInterval" "%interval"				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"      "%Slow"
+				}
+				"OnIntervalThink"
+				{
+					"RunScript"
+								{
+								"ScriptFile"			"scripts/vscripts/abilities/general.lua"
+								"Function"				"dealPUREdamagebasedonlevel"
+								"Target"				"TARGET"
+								"damagebase"			"%damagebase"
+								"damagemult"			"%damagemult"
+								}
+				
+				}
+			}
+		}
+		"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type"				"FIELD_FLOAT"
+					"duration" "120"
+					
+				}	
+				"03"
+				{
+					"var_type"				"FIELD_FLOAT"
+					"damagebase" "8"
+					
+				}
+				"04"
+				{
+					"var_type"				"FIELD_FLOAT"
+					"Percentage" "2"
+					
+				}
+				"05"
+				{
+					"var_type"				"FIELD_FLOAT"
+					"interval" "1"
+					
+				}	
+				"02"
+				{
+					"var_type"				"FIELD_FLOAT"
+					"damagemult" "2"
+					
+				}
+				"06"
+				{
+					"var_type"				"FIELD_INTEGER"
+					"Slow" "-5 -10 -15"
+					
+				}
+				"07"
+				{
+					"var_type"				"FIELD_FLOAT"
+					"slowduration" "5"
+					
+				}	
+			}
+				
+	}	
+	
 	//=================================================================================================================
 	// Rupture
 	//=================================================================================================================
@@ -666,11 +1263,6 @@
 					"Target"	   "TARGET"	
 					"Duration"		"0.1"
 					}
-					"ApplyModifier"
-					{
-					"ModifierName" "modifier_feast_bonus"
-					"Target"	   "CASTER"	
-					}
 					"RunScript"
 				{
 					"ScriptFile"			"scripts/vscripts/abilities/chogath.lua"
@@ -722,10 +1314,21 @@
 					
 					"OnDeath"
 					{
+						"ApplyModifier"
+						{
+						"ModifierName" "modifier_feast_bonus"
+						"Target"	   "CASTER"	
+						"Duration"	   "-1"	
+						}
 						"RunScript"
 						{
 							"ScriptFile"			"scripts/vscripts/abilities/chogath.lua"
 							"Function"				"AddStack"
+						}
+						"RunScript"
+						{
+							"ScriptFile"			"scripts/vscripts/abilities/chogath.lua"
+							"Function"				"UpdateStack"
 						}
 					}
 					"OnCreated"

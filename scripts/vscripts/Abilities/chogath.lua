@@ -19,11 +19,9 @@ end
 function RemoveStacks(keys)
 	local caster=keys.caster
 	local playerowner = caster:GetPlayerOwner()
-	local DataCounter = GameData:For("DataCounter",playerowner)
+	local DataCounter = GameData:For("DataCounter",playerowner)		
 	
-	if DataCounter.ChoGathStacks~=0 then
-	
-	DataCounter.ChoGathStacks=math.ceil(DataCounter.ChoGathStacks/2-1)
+	if DataCounter.ChoGathStacks==6 then math.ceil(DataCounter.ChoGathStacks/2)
 	
 	local ability = keys.ability
 	local level = ability:GetLevel()
@@ -36,7 +34,6 @@ function RemoveStacks(keys)
 		caster:SetModifierStackCount("modifier_feast_bonus",nil,0)	
 		caster:RemoveModifierByName("modifier_feast_bonus")
 		end
-	end			
 end
 
 

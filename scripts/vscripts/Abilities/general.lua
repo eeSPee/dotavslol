@@ -163,3 +163,34 @@ function scrapelifebasedonabilitypowerHUNDREDS(keys)
 	ApplyDamage(damageTable)
 end
 
+function RestoreManaPercent(keys)
+	local unit=keys.caster
+	local Percentage=keys.mana/100
+	
+	unit:GiveMana(unit:GetMaxMana()*Percentage)	
+end
+
+function RestoreLifePercent(keys)
+	local unit=keys.caster
+	local Percentage=keys.life/100
+	
+	unit:Heal(unit:GetMaxHealth()*Percentage,unit)	
+end
+
+function dealPUREdamagebasedonlevel(keys)
+	local caster=keys.caster
+	local target = keys.target	
+	local ability = keys.ability	
+	local varA = keys.damagebase
+	local varB = keys.damagemult	
+	
+	local DMJ=varA+varB*caster:GetLevel();
+		
+	local damageTable = {
+	victim = target,
+	attacker = caster,
+	damage  = DMJ,
+	damage_type = DAMAGE_TYPE_PURE,
+	}
+	ApplyDamage(damageTable)
+end
